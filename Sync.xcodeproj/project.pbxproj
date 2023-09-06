@@ -11,7 +11,59 @@
 		8B19F14D2A7AEDE600556F93 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F14C2A7AEDE600556F93 /* ContentView.swift */; };
 		8B19F14F2A7AEDE800556F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F14E2A7AEDE800556F93 /* Assets.xcassets */; };
 		8B19F1522A7AEDE800556F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F1512A7AEDE800556F93 /* Preview Assets.xcassets */; };
+		8B19F15B2A7AEE7300556F93 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F15A2A7AEE7300556F93 /* SplashScreen.swift */; };
+		8B2044BB2A8D023C009282EE /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2044BA2A8D023C009282EE /* ActivityCard.swift */; };
+		8B2044BD2A8D6174009282EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B2044BC2A8D6173009282EE /* GoogleService-Info.plist */; };
+		8B2044C02A8D6484009282EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2044BF2A8D6484009282EE /* FirebaseAuth */; };
+		8B2044C22A8D6484009282EE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2044C12A8D6484009282EE /* FirebaseFirestore */; };
+		8B2044C42A8D6484009282EE /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2044C32A8D6484009282EE /* FirebaseFirestoreSwift */; };
+		8B2044C62A8D667D009282EE /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2044C52A8D667D009282EE /* Item.swift */; };
+		8B2044C82A8E1560009282EE /* StepDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2044C72A8E1560009282EE /* StepDetails.swift */; };
+		8B4214C62A8B935C00924A9B /* HealthViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4214C52A8B935C00924A9B /* HealthViewScreen.swift */; };
+		8B4214CA2A8B93AC00924A9B /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4214C92A8B93AC00924A9B /* HealthKitManager.swift */; };
+		8B4214CE2A8BB49600924A9B /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4214CD2A8BB49600924A9B /* Activity.swift */; };
+		8B459A002AA4EEB1009DE923 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4599FF2AA4EEB1009DE923 /* WidgetKit.framework */; };
+		8B459A022AA4EEB1009DE923 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B459A012AA4EEB1009DE923 /* SwiftUI.framework */; };
+		8B459A052AA4EEB1009DE923 /* Quick_View_WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A042AA4EEB1009DE923 /* Quick_View_WidgetBundle.swift */; };
+		8B459A072AA4EEB1009DE923 /* Quick_View_WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A062AA4EEB1009DE923 /* Quick_View_WidgetLiveActivity.swift */; };
+		8B459A092AA4EEB1009DE923 /* Quick_View_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A082AA4EEB1009DE923 /* Quick_View_Widget.swift */; };
+		8B459A0C2AA4EEB3009DE923 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B459A0B2AA4EEB3009DE923 /* Assets.xcassets */; };
+		8B459A0E2AA4EEB3009DE923 /* Quick_View_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A0A2AA4EEB2009DE923 /* Quick_View_Widget.intentdefinition */; };
+		8B459A0F2AA4EEB3009DE923 /* Quick_View_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A0A2AA4EEB2009DE923 /* Quick_View_Widget.intentdefinition */; };
+		8B459A122AA4EEB3009DE923 /* Quick View WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B4599FD2AA4EEB1009DE923 /* Quick View WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B459A1B2AA4FF41009DE923 /* Quick_View_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A082AA4EEB1009DE923 /* Quick_View_Widget.swift */; };
+		8BC318842A96408E007D458D /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC318832A96408E007D458D /* HeartBeatView.swift */; };
+		8BC318882A964114007D458D /* HeartShapeHeartBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC318872A964114007D458D /* HeartShapeHeartBeat.swift */; };
+		8BC3188A2A96936E007D458D /* CalorieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC318892A96936E007D458D /* CalorieDetails.swift */; };
+		8BFA981E2A84075400A1D1C2 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA981D2A84075400A1D1C2 /* Login.swift */; };
+		8BFA98202A840C2B00A1D1C2 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA981F2A840C2B00A1D1C2 /* Register.swift */; };
+		8BFA98232A84D03600A1D1C2 /* OnBoardingOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA98222A84D03600A1D1C2 /* OnBoardingOne.swift */; };
+		8BFA98252A84D25C00A1D1C2 /* OnBoardingTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFA98242A84D25C00A1D1C2 /* OnBoardingTwo.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B459A102AA4EEB3009DE923 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B19F13F2A7AEDE600556F93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B4599FC2AA4EEB1009DE923;
+			remoteInfo = "Quick View WidgetExtension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8B459A132AA4EEB3009DE923 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8B459A122AA4EEB3009DE923 /* Quick View WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8B19F1472A7AEDE600556F93 /* Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sync.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,6 +71,31 @@
 		8B19F14C2A7AEDE600556F93 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8B19F14E2A7AEDE800556F93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B19F1512A7AEDE800556F93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B19F15A2A7AEE7300556F93 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		8B2044BA2A8D023C009282EE /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
+		8B2044BC2A8D6173009282EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B2044C52A8D667D009282EE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		8B2044C72A8E1560009282EE /* StepDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StepDetails.swift; path = Sync/StepDetails.swift; sourceTree = SOURCE_ROOT; };
+		8B4214C52A8B935C00924A9B /* HealthViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewScreen.swift; sourceTree = "<group>"; };
+		8B4214C92A8B93AC00924A9B /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		8B4214CD2A8BB49600924A9B /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		8B4599FD2AA4EEB1009DE923 /* Quick View WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Quick View WidgetExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B4599FF2AA4EEB1009DE923 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		8B459A012AA4EEB1009DE923 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		8B459A042AA4EEB1009DE923 /* Quick_View_WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick_View_WidgetBundle.swift; sourceTree = "<group>"; };
+		8B459A062AA4EEB1009DE923 /* Quick_View_WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick_View_WidgetLiveActivity.swift; sourceTree = "<group>"; };
+		8B459A082AA4EEB1009DE923 /* Quick_View_Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick_View_Widget.swift; sourceTree = "<group>"; };
+		8B459A0A2AA4EEB2009DE923 /* Quick_View_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Quick_View_Widget.intentdefinition; sourceTree = "<group>"; };
+		8B459A0B2AA4EEB3009DE923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B459A0D2AA4EEB3009DE923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BC318832A96408E007D458D /* HeartBeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
+		8BC318872A964114007D458D /* HeartShapeHeartBeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartShapeHeartBeat.swift; sourceTree = "<group>"; };
+		8BC318892A96936E007D458D /* CalorieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieDetails.swift; sourceTree = "<group>"; };
+		8BFA981D2A84075400A1D1C2 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		8BFA981F2A840C2B00A1D1C2 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		8BFA98212A84D00000A1D1C2 /* Sync.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sync.entitlements; sourceTree = "<group>"; };
+		8BFA98222A84D03600A1D1C2 /* OnBoardingOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingOne.swift; sourceTree = "<group>"; };
+		8BFA98242A84D25C00A1D1C2 /* OnBoardingTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +103,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B2044C02A8D6484009282EE /* FirebaseAuth in Frameworks */,
+				8B2044C22A8D6484009282EE /* FirebaseFirestore in Frameworks */,
+				8B2044C42A8D6484009282EE /* FirebaseFirestoreSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B4599FA2AA4EEB1009DE923 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B459A022AA4EEB1009DE923 /* SwiftUI.framework in Frameworks */,
+				8B459A002AA4EEB1009DE923 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				8B19F1492A7AEDE600556F93 /* Sync */,
+				8B459A032AA4EEB1009DE923 /* Quick View Widget */,
+				8B4599FE2AA4EEB1009DE923 /* Frameworks */,
 				8B19F1482A7AEDE600556F93 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				8B19F1472A7AEDE600556F93 /* Sync.app */,
+				8B4599FD2AA4EEB1009DE923 /* Quick View WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,10 +143,23 @@
 		8B19F1492A7AEDE600556F93 /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				8B4214C42A8B934000924A9B /* Health */,
+				8BFA98212A84D00000A1D1C2 /* Sync.entitlements */,
+				8B19F15A2A7AEE7300556F93 /* SplashScreen.swift */,
 				8B19F14A2A7AEDE600556F93 /* SyncApp.swift */,
+				8BFA981D2A84075400A1D1C2 /* Login.swift */,
+				8BFA981F2A840C2B00A1D1C2 /* Register.swift */,
+				8B2044C72A8E1560009282EE /* StepDetails.swift */,
 				8B19F14C2A7AEDE600556F93 /* ContentView.swift */,
+				8BFA98222A84D03600A1D1C2 /* OnBoardingOne.swift */,
+				8BFA98242A84D25C00A1D1C2 /* OnBoardingTwo.swift */,
+				8B2044BC2A8D6173009282EE /* GoogleService-Info.plist */,
 				8B19F14E2A7AEDE800556F93 /* Assets.xcassets */,
 				8B19F1502A7AEDE800556F93 /* Preview Content */,
+				8B2044C52A8D667D009282EE /* Item.swift */,
+				8BC318832A96408E007D458D /* HeartBeatView.swift */,
+				8BC318872A964114007D458D /* HeartShapeHeartBeat.swift */,
+				8BC318892A96936E007D458D /* CalorieDetails.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -67,6 +172,39 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		8B4214C42A8B934000924A9B /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				8B4214C52A8B935C00924A9B /* HealthViewScreen.swift */,
+				8B4214C92A8B93AC00924A9B /* HealthKitManager.swift */,
+				8B4214CD2A8BB49600924A9B /* Activity.swift */,
+				8B2044BA2A8D023C009282EE /* ActivityCard.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		8B4599FE2AA4EEB1009DE923 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B4599FF2AA4EEB1009DE923 /* WidgetKit.framework */,
+				8B459A012AA4EEB1009DE923 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B459A032AA4EEB1009DE923 /* Quick View Widget */ = {
+			isa = PBXGroup;
+			children = (
+				8B459A042AA4EEB1009DE923 /* Quick_View_WidgetBundle.swift */,
+				8B459A062AA4EEB1009DE923 /* Quick_View_WidgetLiveActivity.swift */,
+				8B459A082AA4EEB1009DE923 /* Quick_View_Widget.swift */,
+				8B459A0A2AA4EEB2009DE923 /* Quick_View_Widget.intentdefinition */,
+				8B459A0B2AA4EEB3009DE923 /* Assets.xcassets */,
+				8B459A0D2AA4EEB3009DE923 /* Info.plist */,
+			);
+			path = "Quick View Widget";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,15 +215,39 @@
 				8B19F1432A7AEDE600556F93 /* Sources */,
 				8B19F1442A7AEDE600556F93 /* Frameworks */,
 				8B19F1452A7AEDE600556F93 /* Resources */,
+				8B459A132AA4EEB3009DE923 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B459A112AA4EEB3009DE923 /* PBXTargetDependency */,
+			);
+			name = Sync;
+			packageProductDependencies = (
+				8B2044BF2A8D6484009282EE /* FirebaseAuth */,
+				8B2044C12A8D6484009282EE /* FirebaseFirestore */,
+				8B2044C32A8D6484009282EE /* FirebaseFirestoreSwift */,
+			);
+			productName = Sync;
+			productReference = 8B19F1472A7AEDE600556F93 /* Sync.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B4599FC2AA4EEB1009DE923 /* Quick View WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B459A162AA4EEB3009DE923 /* Build configuration list for PBXNativeTarget "Quick View WidgetExtension" */;
+			buildPhases = (
+				8B4599F92AA4EEB1009DE923 /* Sources */,
+				8B4599FA2AA4EEB1009DE923 /* Frameworks */,
+				8B4599FB2AA4EEB1009DE923 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Sync;
-			productName = Sync;
-			productReference = 8B19F1472A7AEDE600556F93 /* Sync.app */;
-			productType = "com.apple.product-type.application";
+			name = "Quick View WidgetExtension";
+			productName = "Quick View WidgetExtension";
+			productReference = 8B4599FD2AA4EEB1009DE923 /* Quick View WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +262,9 @@
 					8B19F1462A7AEDE600556F93 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
+					8B4599FC2AA4EEB1009DE923 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 8B19F1422A7AEDE600556F93 /* Build configuration list for PBXProject "Sync" */;
@@ -111,11 +276,15 @@
 				Base,
 			);
 			mainGroup = 8B19F13E2A7AEDE600556F93;
+			packageReferences = (
+				8B2044BE2A8D6484009282EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 8B19F1482A7AEDE600556F93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8B19F1462A7AEDE600556F93 /* Sync */,
+				8B4599FC2AA4EEB1009DE923 /* Quick View WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -126,7 +295,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B19F1522A7AEDE800556F93 /* Preview Assets.xcassets in Resources */,
+				8B2044BD2A8D6174009282EE /* GoogleService-Info.plist in Resources */,
 				8B19F14F2A7AEDE800556F93 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B4599FB2AA4EEB1009DE923 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B459A0C2AA4EEB3009DE923 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,12 +315,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4214CE2A8BB49600924A9B /* Activity.swift in Sources */,
+				8B19F15B2A7AEE7300556F93 /* SplashScreen.swift in Sources */,
 				8B19F14D2A7AEDE600556F93 /* ContentView.swift in Sources */,
+				8B459A0F2AA4EEB3009DE923 /* Quick_View_Widget.intentdefinition in Sources */,
+				8B459A1B2AA4FF41009DE923 /* Quick_View_Widget.swift in Sources */,
+				8BC318842A96408E007D458D /* HeartBeatView.swift in Sources */,
+				8BC3188A2A96936E007D458D /* CalorieDetails.swift in Sources */,
+				8B4214C62A8B935C00924A9B /* HealthViewScreen.swift in Sources */,
+				8BC318882A964114007D458D /* HeartShapeHeartBeat.swift in Sources */,
+				8B2044C62A8D667D009282EE /* Item.swift in Sources */,
 				8B19F14B2A7AEDE600556F93 /* SyncApp.swift in Sources */,
+				8BFA98232A84D03600A1D1C2 /* OnBoardingOne.swift in Sources */,
+				8BFA98252A84D25C00A1D1C2 /* OnBoardingTwo.swift in Sources */,
+				8BFA981E2A84075400A1D1C2 /* Login.swift in Sources */,
+				8BFA98202A840C2B00A1D1C2 /* Register.swift in Sources */,
+				8B2044C82A8E1560009282EE /* StepDetails.swift in Sources */,
+				8B2044BB2A8D023C009282EE /* ActivityCard.swift in Sources */,
+				8B4214CA2A8B93AC00924A9B /* HealthKitManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B4599F92AA4EEB1009DE923 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B459A052AA4EEB1009DE923 /* Quick_View_WidgetBundle.swift in Sources */,
+				8B459A0E2AA4EEB3009DE923 /* Quick_View_Widget.intentdefinition in Sources */,
+				8B459A092AA4EEB1009DE923 /* Quick_View_Widget.swift in Sources */,
+				8B459A072AA4EEB1009DE923 /* Quick_View_WidgetLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B459A112AA4EEB3009DE923 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B4599FC2AA4EEB1009DE923 /* Quick View WidgetExtension */;
+			targetProxy = 8B459A102AA4EEB3009DE923 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8B19F1532A7AEDE800556F93 /* Debug */ = {
@@ -262,19 +475,22 @@
 		8B19F1562A7AEDE800556F93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sync/Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sync/Preview Content\"";
 				DEVELOPMENT_TEAM = VRYD2888G8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to access yor health info to start using Sync";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -291,19 +507,22 @@
 		8B19F1572A7AEDE800556F93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Sync/Sync.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Sync/Preview Content\"";
 				DEVELOPMENT_TEAM = VRYD2888G8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to access yor health info to start using Sync";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,6 +530,60 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = simon.Sync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8B459A142AA4EEB3009DE923 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VRYD2888G8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quick View Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick View Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "simon.Sync.Quick-View-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B459A152AA4EEB3009DE923 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VRYD2888G8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Quick View Widget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Quick View Widget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "simon.Sync.Quick-View-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -338,7 +611,45 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		8B459A162AA4EEB3009DE923 /* Build configuration list for PBXNativeTarget "Quick View WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B459A142AA4EEB3009DE923 /* Debug */,
+				8B459A152AA4EEB3009DE923 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B2044BE2A8D6484009282EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B2044BF2A8D6484009282EE /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B2044BE2A8D6484009282EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		8B2044C12A8D6484009282EE /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B2044BE2A8D6484009282EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		8B2044C32A8D6484009282EE /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B2044BE2A8D6484009282EE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8B19F13F2A7AEDE600556F93 /* Project object */;
 }
