@@ -1,29 +1,24 @@
-//
-//  CalorieDetails.swift
-//  Sync
-//
-//  Created by Simon Riley on 2023/08/23.
-//
-
 import SwiftUI
 import Charts
 
-struct CalorieDetails: View {
-    
+struct Details: View {
     @ObservedObject var manager: HealthKitManager = HealthKitManager()
     @State private var isViewActive = false
-    @State private var calorieData: [DaysOfTheWeek] = []
-    @State private var filteredCalorieData: [DaysOfTheWeek] = []
+    @State private var stepData: [DaysOfTheWeek] = []
+    @State private var filteredStepData: [DaysOfTheWeek] = []
     @State private var selectedDay: String = ""
+    
+    // Create a @State property to hold the Firebase step data
+    @State private var firebaseStepData: [DaysOfTheWeek] = []
 
     // Initialize filteredStepData with the data for "Monday"
     init() {
-        _filteredCalorieData = State(initialValue: calorieData.filter { $0.day == "Monday" })
+        _filteredStepData = State(initialValue: stepData.filter { $0.day == "Monday" })
     }
 
     // Computed property to filter step data for the selected day
     var selectedDayStepData: [DaysOfTheWeek] {
-        return calorieData.filter { $0.day == selectedDay }
+        return stepData.filter { $0.day == selectedDay }
     }
 
     var body: some View {
@@ -33,15 +28,15 @@ struct CalorieDetails: View {
                     .ignoresSafeArea()
                 ScrollView {
                     VStack(alignment: .leading) {
-                        Text("Calorie Data")
+                        Text("Step Data")
                             .font(.system(size: 23, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .center)
 
                         VStack(alignment: .leading) {
                             Text("Today's Activity")
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
 
 //                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 2)) {
 //                                ForEach(manager.activities) { activity in
@@ -53,24 +48,25 @@ struct CalorieDetails: View {
 
                         
 
-                        Text("Calories this Week")
+                        Text("Steps this Week")
                             .padding()
                             .foregroundColor(.white)
 
                         ZStack {
                             Color(uiColor: .systemGray6)
                                 .cornerRadius(15)
-                            HStack(spacing: 20) { // Add spacing between charts
-                                ForEach(manager.weeklyCaloriesData) { element in
+                            HStack(spacing: 10) { // Add spacing between charts
+                                ForEach(manager.weeklyStepData) { element in
                                     Chart {
-                                        BarMark(
+                                        LineMark(
                                             x: .value("Days", element.day),
-                                            y: .value("Calories", element.amount),
-                                            width: 5
+                                            y: .value("Steps", element.amount)
                                         )
-                                        .foregroundStyle(by: .value("Days", element.day))
+                                        .foregroundStyle(.orange)
+                                                // 7
+                                                .interpolationMethod(.catmullRom)
                                     }
-                                    .chartForegroundStyleScale([element.day: Color(.white)])
+//                                    .chartForegroundStyleScale([element.day: Color(.white)])
                                 }
                             } .padding()
                            
@@ -85,25 +81,30 @@ struct CalorieDetails: View {
                                     .padding()
                                 
                                 Picker("Select a Day", selection: $selectedDay) {
-                                    ForEach(manager.weeklyCaloriesData.map { $0.day }, id: \.self) { day in
+                                    ForEach(manager.weeklyStepData.map { $0.day }, id: \.self) { day in
                                         Text(day)
                                     }
                                 }
                                 .pickerStyle(SegmentedPickerStyle())
 //                                .padding()
                                 
-                                if let selectedData = manager.weeklyCaloriesData.first(where: { $0.day == selectedDay }) {
-                                    Text("Calories on \(selectedData.day): \(selectedData.amount)")
-                                        .padding()
+                                if let selectedData = manager.weeklyStepData.first(where: { $0.day == selectedDay }) {
+                                    VStack(alignment: .leading){
+                                        Text("Steps on \(selectedData.day): \(selectedData.amount)")
+                                            .padding()
+                                            .foregroundColor(.white)
+                                    }
+                                   
                                 } else {
                                     Text("No data available for selected day.")
                                         .padding()
+                                        .foregroundColor(.white)
                                 }
                         }.padding()
                         
                         
 
-                        Text("My Saved Calories")
+                        Text("My Saved Steps")
                             .padding()
                             .foregroundColor(.white)
 
@@ -113,6 +114,17 @@ struct CalorieDetails: View {
                           
                         }
                         .padding(.horizontal)
+                        
+                        
+                        ForEach(firebaseStepData, id: \.day) { dayData in
+                                         VStack {
+                                             Text("Day: \(dayData.day)")
+                                             Text("Steps: \(dayData.amount)")
+                                         }
+                                         .padding()
+                                         .foregroundColor(.white)
+                                     }
+                        
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .navigationBarHidden(true)
@@ -120,18 +132,19 @@ struct CalorieDetails: View {
             }
             .navigationBarHidden(true)
             .onAppear {
-                manager.fetchWeeklyCalories()
+                manager.fetchWeeklySteps()
 
-                manager.fetchCalorieDataFromFirebase { calorieData in
-                    self.calorieData = calorieData
+                manager.fetchStepDataFromFirebase { stepData in
+                    self.stepData = stepData
+                    print("Fetched step data from Firebase: \(stepData)")
                 }
             }
         }
     }
 }
 
-struct CalorieDetails_Previews: PreviewProvider {
+struct Details_Previews: PreviewProvider {
     static var previews: some View {
-        CalorieDetails()
+        Details()
     }
 }

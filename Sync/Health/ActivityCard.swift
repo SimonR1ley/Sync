@@ -10,39 +10,54 @@ import SwiftUI
 
 struct ActivityCard: View {
     @State var activity: Activity
+    @ObservedObject var manager: HealthKitManager
+    
+    init(activity: Activity, manager: HealthKitManager) {
+        self._activity = State(initialValue: activity)
+        self.manager = manager
+    }
+    
     var body: some View {
-        ZStack{
-            Color(uiColor: .systemGray6)
-                .cornerRadius(15)
-            
-            VStack(spacing: 16){
-                
-                HStack(alignment: .top){
-                    VStack(alignment: .leading, spacing: 5){
-                        Text(activity.title)
-                            .font(.system(size: 16))
-                        Text(activity.amount)
-                            .font(.system(size: 24))
-                        
-                    }
-                    Spacer()
-                    
-                    Image(systemName: activity.image)
-                        .foregroundColor(activity.color)
+        VStack(spacing: 16) {
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(activity.title)
+                        .font(.headline)
+                    Text(activity.amount)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+//                    Text("Heart Rate: \(manager.heartRateValue) BPM") // Display heart rate
+//                        .font(.subheadline)
                 }
-                .padding()
-               
+                Spacer()
+                Image(systemName: activity.image)
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(activity.color)
             }
             .padding()
-            .cornerRadius(15)
+            .foregroundColor(Color.black)
+            .background(
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color(.white))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(activity.color, lineWidth: 2)
+            )
+            .padding()
         }
+        .background(Color.clear) // To avoid overlapping backgrounds
     }
 }
 
 struct ActivityCard_Previews: PreviewProvider {
     static var previews: some View {
-        ActivityCard(activity: Activity(title: "Daily Steps", amount: "6,545", image: "figure.walk", color: .green))
-        
-        
+        let manager = HealthKitManager() // Create a HealthKitManager for previews
+        let mockActivity = Activity(title: "Today's Steps", amount: "6,545", image: "figure.walk.circle", color: .green) // Create a mock Activity
+
+        return ActivityCard(activity: mockActivity, manager: manager)
+            .previewLayout(.sizeThatFits)
     }
 }
+

@@ -67,7 +67,7 @@ struct Register: View {
                         .frame(width: 300, height: 50)
 //                        .background(Color(.white))
                         .border(Color.white, width: 5)
-                        .cornerRadius(10)
+//                        .cornerRadius(10)
                         .foregroundColor(.white)
 //                        .accentColor(.white)
                         .placeholder(when: username.isEmpty) {
@@ -81,7 +81,7 @@ struct Register: View {
                         .frame(width: 300, height: 50)
 //                        .background(Color(.white))
                         .border(Color.white, width: 5)
-                        .cornerRadius(10)
+//                        .cornerRadius(10)
                         .foregroundColor(.white)
 //                        .accentColor(.white)
                         .placeholder(when: email.isEmpty) {
@@ -94,7 +94,7 @@ struct Register: View {
                         .frame(width: 300, height: 50)
 //                        .background(Color(.white))
                         .border(Color.white, width: 5)
-                        .cornerRadius(10)
+//                        .cornerRadius(10)
                         .foregroundColor(.white)
 //                        .accentColor(.white)
                         .placeholder(when: password.isEmpty) {
@@ -120,18 +120,21 @@ struct Register: View {
                     
                     
                     Button(action: {
-                                    registerUser() // Call the function to log in the user
-                                }) {
-                                    Text("Register")
-                                        .foregroundColor(.white)
-                                        .frame(width: 300, height: 50)
-                                        .background(Color(.white))
-                                        .cornerRadius(10)
-                                }
-                                .background(NavigationLink("", destination: OnBoardingOne(), isActive: $showOnboarding)) // Use showOnboarding here
-                                .accentColor(.black)
-                                .overlay(Text("Register").foregroundColor(.black), alignment: .center)
-                                .disabled(email.isEmpty || password.isEmpty || username.isEmpty)
+                        registerUser()
+                        showOnboarding = true // Activate the showOnboarding state when the registration is successful
+                    }) {
+                        Text("Register")
+                            .foregroundColor(.black)
+                            .frame(width: 300, height: 50)
+                            .background(Color(.white))
+                            .cornerRadius(10)
+                    }
+                    .disabled(email.isEmpty || password.isEmpty || username.isEmpty)
+
+                    // Use the NavigationLink separately to navigate to the onboarding screen when showOnboarding is true.
+                    NavigationLink("", destination: OnBoardingOne(), isActive: $showOnboarding)
+                        .opacity(0) // Hide the link, but it will trigger navigation when showOnboarding is true
+
 
                  
                     

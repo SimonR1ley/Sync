@@ -32,6 +32,8 @@
 		8B459A0F2AA4EEB3009DE923 /* Quick_View_Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A0A2AA4EEB2009DE923 /* Quick_View_Widget.intentdefinition */; };
 		8B459A122AA4EEB3009DE923 /* Quick View WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8B4599FD2AA4EEB1009DE923 /* Quick View WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B459A1B2AA4FF41009DE923 /* Quick_View_Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B459A082AA4EEB1009DE923 /* Quick_View_Widget.swift */; };
+		8B6BE0E52AC3690700C97490 /* SyncTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6BE0E42AC3690700C97490 /* SyncTabView.swift */; };
+		8B6BE0E72AC3719C00C97490 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6BE0E62AC3719C00C97490 /* Details.swift */; };
 		8BC318842A96408E007D458D /* HeartBeatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC318832A96408E007D458D /* HeartBeatView.swift */; };
 		8BC318882A964114007D458D /* HeartShapeHeartBeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC318872A964114007D458D /* HeartShapeHeartBeat.swift */; };
 		8BC3188A2A96936E007D458D /* CalorieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC318892A96936E007D458D /* CalorieDetails.swift */; };
@@ -88,6 +90,8 @@
 		8B459A0A2AA4EEB2009DE923 /* Quick_View_Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Quick_View_Widget.intentdefinition; sourceTree = "<group>"; };
 		8B459A0B2AA4EEB3009DE923 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B459A0D2AA4EEB3009DE923 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8B6BE0E42AC3690700C97490 /* SyncTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncTabView.swift; sourceTree = "<group>"; };
+		8B6BE0E62AC3719C00C97490 /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
 		8BC318832A96408E007D458D /* HeartBeatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeatView.swift; sourceTree = "<group>"; };
 		8BC318872A964114007D458D /* HeartShapeHeartBeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartShapeHeartBeat.swift; sourceTree = "<group>"; };
 		8BC318892A96936E007D458D /* CalorieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieDetails.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 				8BC318832A96408E007D458D /* HeartBeatView.swift */,
 				8BC318872A964114007D458D /* HeartShapeHeartBeat.swift */,
 				8BC318892A96936E007D458D /* CalorieDetails.swift */,
+				8B6BE0E42AC3690700C97490 /* SyncTabView.swift */,
+				8B6BE0E62AC3719C00C97490 /* Details.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -321,8 +327,10 @@
 				8B459A0F2AA4EEB3009DE923 /* Quick_View_Widget.intentdefinition in Sources */,
 				8B459A1B2AA4FF41009DE923 /* Quick_View_Widget.swift in Sources */,
 				8BC318842A96408E007D458D /* HeartBeatView.swift in Sources */,
+				8B6BE0E72AC3719C00C97490 /* Details.swift in Sources */,
 				8BC3188A2A96936E007D458D /* CalorieDetails.swift in Sources */,
 				8B4214C62A8B935C00924A9B /* HealthViewScreen.swift in Sources */,
+				8B6BE0E52AC3690700C97490 /* SyncTabView.swift in Sources */,
 				8BC318882A964114007D458D /* HeartShapeHeartBeat.swift in Sources */,
 				8B2044C62A8D667D009282EE /* Item.swift in Sources */,
 				8B19F14B2A7AEDE600556F93 /* SyncApp.swift in Sources */,

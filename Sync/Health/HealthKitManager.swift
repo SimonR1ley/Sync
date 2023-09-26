@@ -188,7 +188,12 @@ class HealthKitManager: ObservableObject {
         }
         
         let calendar = Calendar.current
-        let startOfWeek = calendar.startOfDay(for: calendar.date(byAdding: .weekOfYear, value: -1, to: Date())!)
+        let currentDate = Date()
+        
+        // Calculate the start date of the current week
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate))!
+        
+        // Calculate the end date of the current week
         let endOfWeek = calendar.date(byAdding: .day, value: 7, to: startOfWeek)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startOfWeek, end: endOfWeek)
@@ -225,19 +230,23 @@ class HealthKitManager: ObservableObject {
         
         healthStore.execute(query)
     }
-    
+
     func fetchWeeklyCalories() {
         guard let caloriesType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
             return
         }
         
         let calendar = Calendar.current
-        let startOfWeek = calendar.startOfDay(for: calendar.date(byAdding: .weekOfYear, value: -1, to: Date())!)
+        let currentDate = Date()
+        
+        // Calculate the start date of the current week
+        let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate))!
+        
+        // Calculate the end date of the current week
         let endOfWeek = calendar.date(byAdding: .day, value: 7, to: startOfWeek)!
         
         let predicate = HKQuery.predicateForSamples(withStart: startOfWeek, end: endOfWeek)
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
-        
         
         let query = HKSampleQuery(sampleType: caloriesType, predicate: predicate, limit: HKObjectQueryNoLimit, sortDescriptors: [sortDescriptor]) { query, samples, error in
             if let error = error {
@@ -270,6 +279,7 @@ class HealthKitManager: ObservableObject {
 
         healthStore.execute(query)
     }
+
 
   
     
@@ -346,6 +356,49 @@ class HealthKitManager: ObservableObject {
         }
     }
 
+    
+    func fetchDailyData() {
+        let stepsType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        let caloriesType = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!
+        let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate)!
+
+        let calendar = Calendar.current
+        let startOfDay = calendar.startOfDay(for: Date())
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
+
+        // Fetch step count
+        let stepQuery = HKStatisticsQuery(quantityType: stepsType, quantitySamplePredicate: predicate) { _, result, error in
+            if let sum = result?.sumQuantity() {
+                let stepCount = sum.doubleValue(for: HKUnit.count())
+                print("Daily Steps: \(stepCount)")
+                self.activities.append(Activity(title: "Today's Steps", amount: "\(stepCount.rounded(.towardZero))", image: "figure.walk.circle", color: .green))
+            }
+        }
+
+        // Fetch calorie count
+        let calorieQuery = HKStatisticsQuery(quantityType: caloriesType, quantitySamplePredicate: predicate) { _, result, error in
+            if let sum = result?.sumQuantity() {
+                let caloriesTotal = sum.doubleValue(for: HKUnit.kilocalorie())
+                print("Daily Calories: \(caloriesTotal)")
+                self.activities.append(Activity(title: "Today's Calories", amount: "\(caloriesTotal.rounded(.towardZero))", image: "flame.circle", color: .orange))
+            }
+        }
+
+        // Fetch heart rate
+        let heartRateQuery = HKStatisticsQuery(quantityType: heartRateType, quantitySamplePredicate: predicate) { _, result, error in
+            if let sum = result?.averageQuantity() {
+                let heartRate = sum.doubleValue(for: HKUnit.count().unitDivided(by: .minute()))
+                print("Heart Rate: \(heartRate) BPM")
+                self.heartRateValue = Int(heartRate)
+            }
+        }
+
+        healthStore.execute(stepQuery)
+        healthStore.execute(calorieQuery)
+        healthStore.execute(heartRateQuery)
+    }
+
+    
     
     func fetchCalorieDataFromFirebase(completion: @escaping ([DaysOfTheWeek]) -> Void) {
         // Replace 'healthdata' with the name of your Firestore collection

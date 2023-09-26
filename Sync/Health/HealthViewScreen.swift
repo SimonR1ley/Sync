@@ -49,7 +49,7 @@ struct HealthViewScreen: View {
                             
                             Text("Dashboard")
                                 .font(.system(size: 23, weight: .bold, design: .default))
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .padding()
                             
                             Spacer()
@@ -69,90 +69,100 @@ struct HealthViewScreen: View {
                         
                         Text("Today's Activity")
                             .padding()
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                         
-                        LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 2)){
-                            ForEach(manager.activities){
-                                activity in
-                                                  
-                                ActivityCard(activity: Activity(title: activity.title, amount: activity.amount, image: activity.image, color: activity.color))
-                                
-                            }
-                        }
-                        .padding(.horizontal)
-                        
-                        HStack{
-                            Text("Steps this Week")
-                                .padding()
-                                .foregroundColor(.white)
-                            
-                            Spacer()
-                            
-                            Button("View more") {
-                                isViewActive = true
-                            }
-                            .background(NavigationLink("", destination: StepDetails(), isActive: $isViewActive))
-                            .padding()
-                            .foregroundColor(.blue)
-                        }
-                        
-                        
-                        ZStack {
-                            Color(uiColor: .systemGray6)
-                                .cornerRadius(15)
-                            HStack(spacing: 10) { // Add spacing between charts
-                                ForEach(manager.weeklyStepData) { element in
-                                    Chart {
-                                        BarMark(
-                                            x: .value("Days", element.day),
-                                            y: .value("Steps", element.amount),
-                                            width: 5
-                                        )
-                                        .foregroundStyle(by: .value("Days", element.day))
+                        VStack() {
+                            ForEach(manager.activities) { activity in
+                                ActivityCard(activity: activity, manager: manager) // Pass the manager instance
+                                    .onTapGesture {
+                                        if activity.title == "Steps" {
+                                            // Navigate to StepDetails
+                                        }
                                     }
-                                    .chartForegroundStyleScale([element.day: Color(.white)])
-                                }
-                            } .padding()
-                           
-                        } .padding()
-                            .frame(height: 200)
-                        
-                        HStack{
-                            Text("Calories this Week")
-                                .padding()
-                                .foregroundColor(.white)
-                            
-                            Spacer()
-                            
-                            Button("View more") {
-                                isViewCalorieActive = true
+                                    .background(
+                                        NavigationLink("", destination: StepDetails())
+                                            .opacity(0) // Make the link invisible
+                                    )
                             }
-                            .background(NavigationLink("", destination: CalorieDetails(), isActive: $isViewCalorieActive))
-                            .padding()
-                            .foregroundColor(.blue)
                         }
+//                        .padding()
+
+
+
+                        
+//                        HStack{
+//                            Text("Steps this Week")
+//                                .padding()
+//                                .foregroundColor(.white)
+//                            
+//                            Spacer()
+//                            
+//                            Button("View more") {
+//                                isViewActive = true
+//                            }
+//                            .background(NavigationLink("", destination: StepDetails(), isActive: $isViewActive))
+//                            .padding()
+//                            .foregroundColor(.blue)
+//                        }
                         
                         
-                        ZStack {
-                            Color(uiColor: .systemGray6)
-                                .cornerRadius(15)
-                            HStack(spacing: 20) { // Add spacing between charts
-                                ForEach(manager.weeklyCaloriesData) { element in
-                                    Chart {
-                                        BarMark(
-                                            x: .value("Days", element.day),
-                                            y: .value("Calories", element.amount),
-                                            width: 5
-                                        )
-                                        .foregroundStyle(by: .value("Days", element.day))
-                                        
-                                    }
-                                    .chartForegroundStyleScale([element.day: Color(.white)])
-                          
-                                }
-                            } .padding()
-                            
-                        }.padding(.horizontal)
+//                        ZStack {
+//                            Color(uiColor: .systemGray6)
+//                                .cornerRadius(15)
+//                            HStack(spacing: 10) { // Add spacing between charts
+//                                ForEach(manager.weeklyStepData) { element in
+//                                    Chart {
+//                                        BarMark(
+//                                            x: .value("Days", element.day),
+//                                            y: .value("Steps", element.amount),
+//                                            width: 5
+//                                        )
+//                                        .foregroundStyle(by: .value("Days", element.day))
+//                                    }
+//                                    .chartForegroundStyleScale([element.day: Color(.white)])
+//                                    .foregroundColor(.green)
+//                                }
+//                            } .padding()
+//                           
+//                        } .padding()
+//                            .frame(height: 200)
+                        
+//                        HStack{
+//                            Text("Calories this Week")
+//                                .padding()
+//                                .foregroundColor(.white)
+//                            
+//                            Spacer()
+//                            
+//                            Button("View more") {
+//                                isViewCalorieActive = true
+//                            }
+//                            .background(NavigationLink("", destination: CalorieDetails(), isActive: $isViewCalorieActive))
+//                            .padding()
+//                            .foregroundColor(.blue)
+//                        }
+//                        
+                        
+//                        ZStack {
+//                            Color(uiColor: .systemGray6)
+//                                .cornerRadius(15)
+//                            HStack(spacing: 20) { // Add spacing between charts
+//                                ForEach(manager.weeklyCaloriesData) { element in
+//                                    Chart {
+//                                        BarMark(
+//                                            x: .value("Days", element.day),
+//                                            y: .value("Calories", element.amount),
+//                                            width: 5
+//                                        )
+//                                        .foregroundStyle(by: .value("Days", element.day))
+//                                        
+//                                    }
+//                                    .chartForegroundStyleScale([element.day: Color(.white)])
+//                          
+//                                }
+//                            } .padding()
+//                            
+//                        }.padding(.horizontal)
                         
                         
                         

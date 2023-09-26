@@ -63,13 +63,16 @@ struct Login: View {
                         .frame(width: 300, height: 50)
 //                        .background(Color(.white))
                         .border(Color.white, width: 5)
-                        .cornerRadius(10)
+//                        .cornerRadius(10)
                         .border(Color.red, width: CGFloat(wrongEmail))
                         .foregroundColor(.white)
 //                        .accentColor(.white)
                         .placeholder(when: email.isEmpty) {
                                 Text("Email").foregroundColor(.white)
+//                                .background(Color(.white))
+//                                .cornerRadius(10)
                                 .padding()
+                            
                         }
                     
                     SecureField("", text: $password)
@@ -101,7 +104,7 @@ struct Login: View {
                             .background(Color(.white))
                             .cornerRadius(10)
                     }
-                    .background(NavigationLink("", destination: HealthViewScreen(), isActive: $loginSuccess))
+                    .background(NavigationLink("", destination: SyncTabView(), isActive: $loginSuccess))
                     .accentColor(.black)
                     .overlay(Text("Login").foregroundColor(.black), alignment: .center) // Add placeholder text to the button label
 

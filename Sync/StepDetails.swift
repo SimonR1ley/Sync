@@ -30,20 +30,20 @@ struct StepDetails: View {
                     VStack(alignment: .leading) {
                         Text("Step Data")
                             .font(.system(size: 23, weight: .bold, design: .default))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .center)
 
                         VStack(alignment: .leading) {
                             Text("Today's Activity")
                                 .padding()
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
 
-                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 2)) {
-                                ForEach(manager.activities) { activity in
-                                    ActivityCard(activity: Activity(title: activity.title, amount: activity.amount, image: activity.image, color: activity.color))
-                                }
-                            }
-                            .padding(.horizontal)
+//                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 2)) {
+//                                ForEach(manager.activities) { activity in
+//                                    ActivityCard(activity: Activity(title: activity.title, amount: activity.amount, image: activity.image, color: activity.color))
+//                                }
+//                            }
+//                            .padding(.horizontal)
                         }
 
                         
@@ -58,14 +58,15 @@ struct StepDetails: View {
                             HStack(spacing: 10) { // Add spacing between charts
                                 ForEach(manager.weeklyStepData) { element in
                                     Chart {
-                                        BarMark(
+                                        LineMark(
                                             x: .value("Days", element.day),
-                                            y: .value("Steps", element.amount),
-                                            width: 5
+                                            y: .value("Steps", element.amount)
                                         )
-                                        .foregroundStyle(by: .value("Days", element.day))
+                                        .foregroundStyle(.orange)
+                                                // 7
+                                                .interpolationMethod(.catmullRom)
                                     }
-                                    .chartForegroundStyleScale([element.day: Color(.white)])
+//                                    .chartForegroundStyleScale([element.day: Color(.white)])
                                 }
                             } .padding()
                            
