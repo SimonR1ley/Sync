@@ -70,20 +70,22 @@ struct Quick_View_WidgetEntryView : View {
     var entry: Provider.Entry
 
     @Environment(\.widgetFamily) var widgetFamily
-
+    
     var body: some View {
-
+        
         switch widgetFamily {
         case .systemSmall, .systemMedium:
             ZStack{
                 Color(.black).frame(width: .infinity, height: .infinity)
-
+                
                 Text("Steps: \(entry.stepCount)")
+                    .background(Color.black) // Set the background color using the background modifier
                     .foregroundColor(.white)
             }
         case .accessoryCircular, .accessoryRectangular, .accessoryInline:
             VStack{
                 Text("Steps: \(entry.stepCount)")
+                    .background(Color.black) // Set the background color using the background modifier
                     .foregroundColor(.white)
             }
         default:
@@ -91,6 +93,8 @@ struct Quick_View_WidgetEntryView : View {
         }
     }
 }
+
+
 
 struct Quick_View_Widget: Widget {
     let kind: String = "Quick_View_Widget"

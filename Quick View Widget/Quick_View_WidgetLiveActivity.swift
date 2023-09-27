@@ -26,13 +26,12 @@ struct Quick_View_WidgetLiveActivity: Widget {
             VStack {
                 Text("Hello")
             }
+            .background(Color.clear)
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
 
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
                     Text("Leading")
                 }
