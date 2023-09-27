@@ -4,7 +4,7 @@ import Intents
 import HealthKit
 
 struct Provider: IntentTimelineProvider {
-    
+
     func requestAuthorization(completion: @escaping (Bool) -> Void) {
         let healthStore = HKHealthStore()
 
@@ -70,14 +70,14 @@ struct Quick_View_WidgetEntryView : View {
     var entry: Provider.Entry
 
     @Environment(\.widgetFamily) var widgetFamily
-    
+
     var body: some View {
-        
+
         switch widgetFamily {
         case .systemSmall, .systemMedium:
             ZStack{
                 Color(.black).frame(width: .infinity, height: .infinity)
-                
+
                 Text("Steps: \(entry.stepCount)")
                     .foregroundColor(.white)
             }
@@ -109,16 +109,16 @@ struct Quick_View_Widget_Previews: PreviewProvider {
         Group{
             Quick_View_WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stepCount: 1000))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
-            
+
             Quick_View_WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stepCount: 1000))
                 .previewContext(WidgetPreviewContext(family: .systemMedium))
-            
+
             Quick_View_WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stepCount: 1000))
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
-            
+
             Quick_View_WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stepCount: 1000))
                 .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            
+
             Quick_View_WidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), stepCount: 1000))
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         }

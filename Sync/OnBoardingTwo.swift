@@ -10,6 +10,7 @@ import SwiftUI
 struct OnBoardingTwo: View {
     
     @State private var isViewActive = false
+    let manager = HealthKitManager()
     var body: some View {
         NavigationView{
             VStack{
@@ -26,7 +27,7 @@ struct OnBoardingTwo: View {
                     .font(.system(size: 40, weight: .bold, design: .default))
                     .foregroundColor(.black)
                 
-                Text("Sync is a running tracker. Sync pulls your information from your health app and displays your data in a dashboard format.")
+                Text("Sync is a running tracker. Sync pulls your information from your health app and displays your data in a dashboard format. Note this app requires the use of an apple watch.")
                     .font(.system(size: 20, design: .default))
                     .foregroundColor(.black)
                     .frame(width:340, height: 200)
@@ -36,7 +37,7 @@ struct OnBoardingTwo: View {
                 }
                 .foregroundColor(.black)
                 .frame(width:300, height: 50)
-                .background(NavigationLink("", destination: HealthViewScreen(), isActive: $isViewActive))
+                .background(NavigationLink("", destination: SyncTabView(), isActive: $isViewActive))
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

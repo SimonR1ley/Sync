@@ -5,7 +5,9 @@ struct Details: View {
     @ObservedObject var manager: HealthKitManager = HealthKitManager()
     @State private var isViewActive = false
     @State private var stepData: [DaysOfTheWeek] = []
+    @State private var calorieData: [DaysOfTheWeek] = []
     @State private var filteredStepData: [DaysOfTheWeek] = []
+    @State private var filteredCalorieData: [DaysOfTheWeek] = []
     @State private var selectedDay: String = ""
     
     // Create a @State property to hold the Firebase step data
@@ -14,11 +16,16 @@ struct Details: View {
     // Initialize filteredStepData with the data for "Monday"
     init() {
         _filteredStepData = State(initialValue: stepData.filter { $0.day == "Monday" })
+        _filteredCalorieData = State(initialValue: calorieData.filter { $0.day == "Monday" })
     }
 
     // Computed property to filter step data for the selected day
     var selectedDayStepData: [DaysOfTheWeek] {
         return stepData.filter { $0.day == selectedDay }
+    }
+    
+    var selectedDayCalorieData: [DaysOfTheWeek] {
+        return calorieData.filter { $0.day == selectedDay }
     }
 
     var body: some View {
@@ -51,7 +58,7 @@ struct Details: View {
                                         )
                                      
                                     }
-                                    .foregroundStyle(.orange)
+                                    .foregroundStyle(.green)
                                 
                             } .padding()
                            
@@ -72,13 +79,8 @@ struct Details: View {
                                         )
                                      
                                     }
-                                    .foregroundColor(Color(red: 216/255, green: 67/255, blue: 57/255))
-                                    
-                                    
-                            
-                                  
-                                    
-                                   
+                                    .foregroundColor(.green)
+                                
                             } .padding()
                            
                         } .padding()
@@ -86,12 +88,6 @@ struct Details: View {
                         
                         
                         VStack {
-//                                Color(uiColor: .systemGray6)
-//                                    .cornerRadius(15)
-//                                    .padding()
-                            
-                      
-                                
                                 Picker("Select a Day", selection: $selectedDay) {
                                     ForEach(manager.weeklyStepData.map { $0.day }, id: \.self) { day in
                                         Text(day)
@@ -100,8 +96,7 @@ struct Details: View {
                                 .pickerStyle(SegmentedPickerStyle())
                                 .background(Color(.systemGray6))
                                 .cornerRadius(5)
-//                                .padding()
-                                
+                            
                                 if let selectedData = manager.weeklyStepData.first(where: { $0.day == selectedDay }) {
                                     
                                     HStack() {
@@ -111,18 +106,12 @@ struct Details: View {
                                                 .padding()
                                                 .foregroundColor(.white)
                                         }
-                                        .background(Color(red: 216/255, green: 67/255, blue: 57/255))
+                                        .background(.green)
                                         .cornerRadius(10)
                                         .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 4)
                                         Spacer()
                                     }.padding()
-                                    
-                                 
-
-                                   
                                 } else {
-                                  
-                                    
                                     HStack() {
                                         Spacer()
                                         VStack(alignment: .leading) {
@@ -130,7 +119,7 @@ struct Details: View {
                                                 .padding()
                                                 .foregroundColor(.white)
                                         }
-                                        .background(Color(red: 216/255, green: 67/255, blue: 57/255))
+                                        .background(.green)
                                         .cornerRadius(10)
                                         .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 4)
                                         Spacer()
@@ -139,10 +128,109 @@ struct Details: View {
                         }.padding()
                         
                         
-
-                        Text("My Saved Steps")
+                        
+                        
+                        
+                        
+                        
+                        
+                        Text("Calories this Week")
                             .padding()
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
+                        
+                        ZStack {
+                            Color(uiColor: .systemGray6)
+                                .cornerRadius(15)
+                            HStack(spacing: 10) { // Add spacing between charts
+                           
+                                    Chart(manager.weeklyCaloriesData) {
+                                        element in
+                                        LineMark(
+                                            x: .value("Days", element.day),
+                                            y: .value("Calories", element.amount)
+                                        )
+                                     
+                                    }
+                                    .foregroundStyle(.orange)
+                                
+                            } .padding()
+                           
+                        } .padding()
+                            .frame(height: 200)
+
+                        ZStack {
+                            Color(uiColor: .systemGray6)
+                                .cornerRadius(15)
+                            HStack(spacing: 10) {
+                                    Chart(manager.weeklyCaloriesData) {
+                                        element in
+                                        BarMark(
+                                            x: .value("Days", element.day),
+                                            y: .value("Calories", element.amount),
+                                            width: 5
+                                        )
+                                    }
+                                    .foregroundColor(.orange)
+                                    
+                            }.padding()
+                           
+                        } .padding()
+                            .frame(height: 200)
+                        
+                     
+                        
+                        
+                        
+                        
+                        VStack {
+                                Picker("Select a Day", selection: $selectedDay) {
+                                    ForEach(manager.weeklyCaloriesData.map { $0.day }, id: \.self) { day in
+                                        Text(day)
+                                    }
+                                }
+                                .pickerStyle(SegmentedPickerStyle())
+                                .background(Color(.systemGray6))
+                                .cornerRadius(5)
+                            
+                                if let selectedData = manager.weeklyCaloriesData.first(where: { $0.day == selectedDay }) {
+                                    
+                                    HStack() {
+                                        Spacer()
+                                        VStack(alignment: .leading) {
+                                            Text("Steps on \(selectedData.day): \(selectedData.amount)")
+                                                .padding()
+                                                .foregroundColor(.white)
+                                        }
+                                        .background(.orange)
+                                        .cornerRadius(10)
+                                        .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 4)
+                                        Spacer()
+                                    }.padding()
+                                } else {
+                                    HStack() {
+                                        Spacer()
+                                        VStack(alignment: .leading) {
+                                            Text("No data available for selected day.")
+                                                .padding()
+                                                .foregroundColor(.white)
+                                        }
+                                        .background(.orange)
+                                        .cornerRadius(10)
+                                        .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 4)
+                                        Spacer()
+                                    }.padding()
+                                }
+                        }.padding()
+                        
+                        
+                        
+                        
+                        
+                        
+
+//                        Text("My Saved Steps")
+//                            .padding()
+//                            .foregroundColor(.black)
 
                     
                         
@@ -165,10 +253,10 @@ struct Details: View {
             .onAppear {
                 manager.fetchWeeklySteps()
 
-                manager.fetchStepDataFromFirebase { stepData in
-                    self.stepData = stepData
-                    print("Fetched step data from Firebase: \(stepData)")
-                }
+//                manager.fetchStepDataFromFirebase { stepData in
+//                    self.stepData = stepData
+//                    print("Fetched step data from Firebase: \(stepData)")
+//                }
             }
         }
     }

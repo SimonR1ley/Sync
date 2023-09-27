@@ -1,6 +1,17 @@
 import SwiftUI
 import Firebase
 
+
+struct CustomTextFieldStyleRegister: TextFieldStyle {
+    func _body(configuration: TextField<_Label>) -> some View {
+        configuration
+            .padding(.horizontal, 10)
+//            .background(Color.white.opacity(0.2))
+//            .cornerRadius(8)
+            .foregroundColor(.white)
+    }
+}
+
 struct Register: View {
     @State private var email = ""
     @State private var password = ""
@@ -62,45 +73,52 @@ struct Register: View {
                         .padding()
                         .foregroundColor(.white)
 
-                    TextField("", text: $username)
+//                    TextField("", text: $username)
+//                        .padding()
+//                        .frame(width: 300, height: 50)
+////                        .background(Color(.white))
+//                        .border(Color.white, width: 5)
+////                        .cornerRadius(10)
+//                        .foregroundColor(.white)
+////                        .accentColor(.white)
+//                        .placeholder(when: username.isEmpty) {
+//                                Text("Username").foregroundColor(.white)
+//                                .padding()
+//                        }
+                    
+                    TextField("Username", text: $username)
+                        .textFieldStyle(CustomTextFieldStyleRegister())
                         .padding()
                         .frame(width: 300, height: 50)
-//                        .background(Color(.white))
-                        .border(Color.white, width: 5)
+                        .border(Color.white, width: 4)
 //                        .cornerRadius(10)
-                        .foregroundColor(.white)
-//                        .accentColor(.white)
-                        .placeholder(when: username.isEmpty) {
-                                Text("Username").foregroundColor(.white)
-                                .padding()
-                        }
                   
 
-                    TextField("", text: $email)
+//                    TextField("", text: $email)
+//                        .padding()
+//                        .frame(width: 300, height: 50)
+////                        .background(Color(.white))
+//                        .border(Color.white, width: 5)
+////                        .cornerRadius(10)
+//                        .foregroundColor(.white)
+////                        .accentColor(.white)
+//                        .placeholder(when: email.isEmpty) {
+//                                Text("Email").foregroundColor(.white)
+//                                .padding()
+//                        }
+                    TextField("Email", text: $email)
+                        .textFieldStyle(CustomTextFieldStyleRegister())
                         .padding()
                         .frame(width: 300, height: 50)
-//                        .background(Color(.white))
-                        .border(Color.white, width: 5)
+                        .border(Color.white, width: 4)
 //                        .cornerRadius(10)
-                        .foregroundColor(.white)
-//                        .accentColor(.white)
-                        .placeholder(when: email.isEmpty) {
-                                Text("Email").foregroundColor(.white)
-                                .padding()
-                        }
 
                     SecureField("Password", text: $password)
+                        .textFieldStyle(CustomTextFieldStyleRegister())
                         .padding()
                         .frame(width: 300, height: 50)
-//                        .background(Color(.white))
-                        .border(Color.white, width: 5)
+                        .border(Color.white, width: 4)
 //                        .cornerRadius(10)
-                        .foregroundColor(.white)
-//                        .accentColor(.white)
-                        .placeholder(when: password.isEmpty) {
-                                Text("Password").foregroundColor(.white)
-                                .padding()
-                        }
 
                     Text("")
                         .font(.largeTitle)

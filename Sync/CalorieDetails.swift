@@ -122,9 +122,9 @@ struct CalorieDetails: View {
             .onAppear {
                 manager.fetchWeeklyCalories()
 
-                manager.fetchCalorieDataFromFirebase { calorieData in
-                    self.calorieData = calorieData
-                }
+//                manager.fetchCalorieDataFromFirebase { calorieData in
+//                    self.calorieData = calorieData
+//                }
             }
         }
     }

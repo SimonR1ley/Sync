@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Charts
+import FirebaseAuth 
 
 
 struct DaysOfTheWeek: Identifiable {
@@ -22,16 +23,32 @@ struct DaysOfTheWeek: Identifiable {
 
 struct HealthViewScreen: View {
     
-    @ObservedObject var manager: HealthKitManager = HealthKitManager()
+    @ObservedObject var manager: HealthKitManager
     
     @State private var isViewActive = false
-    
     @State private var isViewCalorieActive = false
+    @State private var showConfirmationAlert = false
+    let userEmail = Auth.auth().currentUser
     
-    init() {
-         manager.fetchWeeklySteps()
-        manager.fetchWeeklyCalories()
-     }
+    init(manager: HealthKitManager) {
+        self.manager = manager
+        
+        // Check if a user is logged in
+        if let user = Auth.auth().currentUser {
+            // If a user is logged in, use their email
+            if let userEmail = user.email {
+                manager.fetchDataFromFirestore(userEmail: userEmail)
+            } else {
+                // Handle the case where the user's email is nil (this should not typically happen)
+                print("User's email is nil")
+            }
+        } else {
+            // Handle the case where no user is logged in
+            print("No user is logged in")
+        }
+    }
+
+    
     
     var body: some View {
         
@@ -46,24 +63,29 @@ struct HealthViewScreen: View {
                     VStack(alignment: .leading){
                         
                         HStack{
-                            
-                            Text("Dashboard")
-                                .font(.system(size: 23, weight: .bold, design: .default))
-                                .foregroundColor(.black)
-                                .padding()
-                            
-                            Spacer()
-                            
-                            Button("Save Today's data") {
-                                          manager.saveDataToFirestore()
-                                      }
-                                      .padding()
-                                      .foregroundColor(.blue)
-//                                      .background(Color.white)
-                                      .cornerRadius(10)
-                                      .padding()
-                            
-                        }
+                                                Text("Dashboard")
+                                                    .font(.system(size: 23, weight: .bold, design: .default))
+                                                    .foregroundColor(.black)
+                                                    .padding()
+                                                Spacer()
+                                                Button("Save Today's data") {
+                                                    showConfirmationAlert = true // Show the confirmation alert
+                                                }
+                                                .padding()
+                                                .foregroundColor(.blue)
+                                                .cornerRadius(10)
+                                                .padding()
+                                                .alert(isPresented: $showConfirmationAlert) {
+                                                    Alert(
+                                                        title: Text("Confirm Save"),
+                                                        message: Text("Are you sure you want to save today's data?"),
+                                                        primaryButton: .default(Text("Save")) {
+                                                            manager.saveDataToFirestore()
+                                                        },
+                                                        secondaryButton: .cancel()
+                                                    )
+                                                }
+                                            }
                         
                       
                         
@@ -73,99 +95,12 @@ struct HealthViewScreen: View {
                         
                         VStack() {
                             ForEach(manager.activities) { activity in
-                                ActivityCard(activity: activity, manager: manager) // Pass the manager instance
-                                    .onTapGesture {
-                                        if activity.title == "Steps" {
-                                            // Navigate to StepDetails
-                                        }
-                                    }
-                                    .background(
-                                        NavigationLink("", destination: StepDetails())
-                                            .opacity(0) // Make the link invisible
-                                    )
+                                ActivityCard(activity: Activity(title: activity.title, amount: activity.amount, image: activity.image, color: activity.color))
+                               
                             }
                         }
-//                        .padding()
-
-
-
                         
-//                        HStack{
-//                            Text("Steps this Week")
-//                                .padding()
-//                                .foregroundColor(.white)
-//                            
-//                            Spacer()
-//                            
-//                            Button("View more") {
-//                                isViewActive = true
-//                            }
-//                            .background(NavigationLink("", destination: StepDetails(), isActive: $isViewActive))
-//                            .padding()
-//                            .foregroundColor(.blue)
-//                        }
-                        
-                        
-//                        ZStack {
-//                            Color(uiColor: .systemGray6)
-//                                .cornerRadius(15)
-//                            HStack(spacing: 10) { // Add spacing between charts
-//                                ForEach(manager.weeklyStepData) { element in
-//                                    Chart {
-//                                        BarMark(
-//                                            x: .value("Days", element.day),
-//                                            y: .value("Steps", element.amount),
-//                                            width: 5
-//                                        )
-//                                        .foregroundStyle(by: .value("Days", element.day))
-//                                    }
-//                                    .chartForegroundStyleScale([element.day: Color(.white)])
-//                                    .foregroundColor(.green)
-//                                }
-//                            } .padding()
-//                           
-//                        } .padding()
-//                            .frame(height: 200)
-                        
-//                        HStack{
-//                            Text("Calories this Week")
-//                                .padding()
-//                                .foregroundColor(.white)
-//                            
-//                            Spacer()
-//                            
-//                            Button("View more") {
-//                                isViewCalorieActive = true
-//                            }
-//                            .background(NavigationLink("", destination: CalorieDetails(), isActive: $isViewCalorieActive))
-//                            .padding()
-//                            .foregroundColor(.blue)
-//                        }
-//                        
-                        
-//                        ZStack {
-//                            Color(uiColor: .systemGray6)
-//                                .cornerRadius(15)
-//                            HStack(spacing: 20) { // Add spacing between charts
-//                                ForEach(manager.weeklyCaloriesData) { element in
-//                                    Chart {
-//                                        BarMark(
-//                                            x: .value("Days", element.day),
-//                                            y: .value("Calories", element.amount),
-//                                            width: 5
-//                                        )
-//                                        .foregroundStyle(by: .value("Days", element.day))
-//                                        
-//                                    }
-//                                    .chartForegroundStyleScale([element.day: Color(.white)])
-//                          
-//                                }
-//                            } .padding()
-//                            
-//                        }.padding(.horizontal)
-                        
-                        
-                        
+              
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                     .navigationBarHidden(true)
@@ -177,6 +112,8 @@ struct HealthViewScreen: View {
 
 struct HealthViewScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HealthViewScreen()
+        let manager = HealthKitManager() // Create an instance of HealthKitManager
+        return HealthViewScreen(manager: manager) // Pass the manager to the view
     }
 }
+

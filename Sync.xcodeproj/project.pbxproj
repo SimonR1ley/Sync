@@ -12,6 +12,9 @@
 		8B19F14F2A7AEDE800556F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F14E2A7AEDE800556F93 /* Assets.xcassets */; };
 		8B19F1522A7AEDE800556F93 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B19F1512A7AEDE800556F93 /* Preview Assets.xcassets */; };
 		8B19F15B2A7AEE7300556F93 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B19F15A2A7AEE7300556F93 /* SplashScreen.swift */; };
+		8B1E2D022AC4A984006518AA /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E2D012AC4A984006518AA /* Database.swift */; };
+		8B1E2D042AC4A9C4006518AA /* FirestoreCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E2D032AC4A9C4006518AA /* FirestoreCard.swift */; };
+		8B1E2D062AC4B147006518AA /* SavedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E2D052AC4B147006518AA /* SavedData.swift */; };
 		8B2044BB2A8D023C009282EE /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2044BA2A8D023C009282EE /* ActivityCard.swift */; };
 		8B2044BD2A8D6174009282EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B2044BC2A8D6173009282EE /* GoogleService-Info.plist */; };
 		8B2044C02A8D6484009282EE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8B2044BF2A8D6484009282EE /* FirebaseAuth */; };
@@ -74,6 +77,9 @@
 		8B19F14E2A7AEDE800556F93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B19F1512A7AEDE800556F93 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8B19F15A2A7AEE7300556F93 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		8B1E2D012AC4A984006518AA /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		8B1E2D032AC4A9C4006518AA /* FirestoreCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreCard.swift; sourceTree = "<group>"; };
+		8B1E2D052AC4B147006518AA /* SavedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedData.swift; sourceTree = "<group>"; };
 		8B2044BA2A8D023C009282EE /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
 		8B2044BC2A8D6173009282EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B2044C52A8D667D009282EE /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 				8BC318892A96936E007D458D /* CalorieDetails.swift */,
 				8B6BE0E42AC3690700C97490 /* SyncTabView.swift */,
 				8B6BE0E62AC3719C00C97490 /* Details.swift */,
+				8B1E2D052AC4B147006518AA /* SavedData.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -185,6 +192,8 @@
 				8B4214C92A8B93AC00924A9B /* HealthKitManager.swift */,
 				8B4214CD2A8BB49600924A9B /* Activity.swift */,
 				8B2044BA2A8D023C009282EE /* ActivityCard.swift */,
+				8B1E2D012AC4A984006518AA /* Database.swift */,
+				8B1E2D032AC4A9C4006518AA /* FirestoreCard.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -337,8 +346,11 @@
 				8BFA98232A84D03600A1D1C2 /* OnBoardingOne.swift in Sources */,
 				8BFA98252A84D25C00A1D1C2 /* OnBoardingTwo.swift in Sources */,
 				8BFA981E2A84075400A1D1C2 /* Login.swift in Sources */,
+				8B1E2D062AC4B147006518AA /* SavedData.swift in Sources */,
 				8BFA98202A840C2B00A1D1C2 /* Register.swift in Sources */,
+				8B1E2D022AC4A984006518AA /* Database.swift in Sources */,
 				8B2044C82A8E1560009282EE /* StepDetails.swift in Sources */,
+				8B1E2D042AC4A9C4006518AA /* FirestoreCard.swift in Sources */,
 				8B2044BB2A8D023C009282EE /* ActivityCard.swift in Sources */,
 				8B4214CA2A8B93AC00924A9B /* HealthKitManager.swift in Sources */,
 			);
@@ -555,6 +567,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick View Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Quick View Widget";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to your step count data for health and fitness tracking.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -582,6 +595,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Quick View Widget/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Quick View Widget";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need access to your step count data for health and fitness tracking.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

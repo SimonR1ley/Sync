@@ -134,10 +134,10 @@ struct StepDetails: View {
             .onAppear {
                 manager.fetchWeeklySteps()
 
-                manager.fetchStepDataFromFirebase { stepData in
-                    self.stepData = stepData
-                    print("Fetched step data from Firebase: \(stepData)")
-                }
+//                manager.fetchStepDataFromFirebase { stepData in
+//                    self.stepData = stepData
+//                    print("Fetched step data from Firebase: \(stepData)")
+//                }
             }
         }
     }
