@@ -28,57 +28,69 @@ struct Details: View {
                     .ignoresSafeArea()
                 ScrollView {
                     VStack(alignment: .leading) {
-                        Text("Step Data")
+                        Text("Details")
                             .font(.system(size: 23, weight: .bold, design: .default))
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .center)
 
-                        VStack(alignment: .leading) {
-                            Text("Today's Activity")
-                                .padding()
-                                .foregroundColor(.black)
-
-//                            LazyVGrid(columns: Array(repeating: GridItem(spacing: 20), count: 2)) {
-//                                ForEach(manager.activities) { activity in
-//                                    ActivityCard(activity: Activity(title: activity.title, amount: activity.amount, image: activity.image, color: activity.color))
-//                                }
-//                            }
-//                            .padding(.horizontal)
-                        }
-
-                        
-
+      
                         Text("Steps this Week")
                             .padding()
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
 
                         ZStack {
                             Color(uiColor: .systemGray6)
                                 .cornerRadius(15)
                             HStack(spacing: 10) { // Add spacing between charts
-                                ForEach(manager.weeklyStepData) { element in
-                                    Chart {
+                           
+                                    Chart(manager.weeklyStepData) {
+                                        element in
                                         LineMark(
                                             x: .value("Days", element.day),
                                             y: .value("Steps", element.amount)
                                         )
-                                        .foregroundStyle(.orange)
-                                                // 7
-                                                .interpolationMethod(.catmullRom)
+                                     
                                     }
-//                                    .chartForegroundStyleScale([element.day: Color(.white)])
-                                }
+                                    .foregroundStyle(.orange)
+                                
                             } .padding()
                            
                         } .padding()
                             .frame(height: 200)
                         
                         
+                        ZStack {
+                            Color(uiColor: .systemGray6)
+                                .cornerRadius(15)
+                            HStack(spacing: 10) { // Add spacing between charts
+                                
+                                    Chart(manager.weeklyStepData) {
+                                        element in
+                                        BarMark(
+                                            x: .value("Days", element.day),
+                                            y: .value("Steps", element.amount)
+                                        )
+                                     
+                                    }
+                                    .foregroundColor(Color(red: 216/255, green: 67/255, blue: 57/255))
+                                    
+                                    
+                            
+                                  
+                                    
+                                   
+                            } .padding()
+                           
+                        } .padding()
+                            .frame(height: 200)
+                        
                         
                         VStack {
-                                Color(uiColor: .systemGray6)
-                                    .cornerRadius(15)
-                                    .padding()
+//                                Color(uiColor: .systemGray6)
+//                                    .cornerRadius(15)
+//                                    .padding()
+                            
+                      
                                 
                                 Picker("Select a Day", selection: $selectedDay) {
                                     ForEach(manager.weeklyStepData.map { $0.day }, id: \.self) { day in
@@ -86,19 +98,43 @@ struct Details: View {
                                     }
                                 }
                                 .pickerStyle(SegmentedPickerStyle())
+                                .background(Color(.systemGray6))
+                                .cornerRadius(5)
 //                                .padding()
                                 
                                 if let selectedData = manager.weeklyStepData.first(where: { $0.day == selectedDay }) {
-                                    VStack(alignment: .leading){
-                                        Text("Steps on \(selectedData.day): \(selectedData.amount)")
-                                            .padding()
-                                            .foregroundColor(.white)
-                                    }
+                                    
+                                    HStack() {
+                                        Spacer()
+                                        VStack(alignment: .leading) {
+                                            Text("Steps on \(selectedData.day): \(selectedData.amount)")
+                                                .padding()
+                                                .foregroundColor(.white)
+                                        }
+                                        .background(Color(red: 216/255, green: 67/255, blue: 57/255))
+                                        .cornerRadius(10)
+                                        .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 4)
+                                        Spacer()
+                                    }.padding()
+                                    
+                                 
+
                                    
                                 } else {
-                                    Text("No data available for selected day.")
-                                        .padding()
-                                        .foregroundColor(.white)
+                                  
+                                    
+                                    HStack() {
+                                        Spacer()
+                                        VStack(alignment: .leading) {
+                                            Text("No data available for selected day.")
+                                                .padding()
+                                                .foregroundColor(.white)
+                                        }
+                                        .background(Color(red: 216/255, green: 67/255, blue: 57/255))
+                                        .cornerRadius(10)
+                                        .shadow(color: Color.gray.opacity(0.4), radius: 5, x: 0, y: 4)
+                                        Spacer()
+                                    }.padding()
                                 }
                         }.padding()
                         
@@ -108,12 +144,7 @@ struct Details: View {
                             .padding()
                             .foregroundColor(.white)
 
-                        ZStack {
-                            Color(uiColor: .systemGray6)
-                                .cornerRadius(15)
-                          
-                        }
-                        .padding(.horizontal)
+                    
                         
                         
                         ForEach(firebaseStepData, id: \.day) { dayData in
