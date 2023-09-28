@@ -33,17 +33,13 @@ struct HealthViewScreen: View {
     init(manager: HealthKitManager) {
         self.manager = manager
         
-        // Check if a user is logged in
         if let user = Auth.auth().currentUser {
-            // If a user is logged in, use their email
             if let userEmail = user.email {
                 manager.fetchDataFromFirestore(userEmail: userEmail)
             } else {
-                // Handle the case where the user's email is nil (this should not typically happen)
                 print("User's email is nil")
             }
         } else {
-            // Handle the case where no user is logged in
             print("No user is logged in")
         }
     }
@@ -69,7 +65,7 @@ struct HealthViewScreen: View {
                                                     .padding()
                                                 Spacer()
                                                 Button("Save Today's data") {
-                                                    showConfirmationAlert = true // Show the confirmation alert
+                                                    showConfirmationAlert = true
                                                 }
                                                 .padding()
                                                 .foregroundColor(.blue)
@@ -112,8 +108,8 @@ struct HealthViewScreen: View {
 
 struct HealthViewScreen_Previews: PreviewProvider {
     static var previews: some View {
-        let manager = HealthKitManager() // Create an instance of HealthKitManager
-        return HealthViewScreen(manager: manager) // Pass the manager to the view
+        let manager = HealthKitManager() 
+        return HealthViewScreen(manager: manager)
     }
 }
 

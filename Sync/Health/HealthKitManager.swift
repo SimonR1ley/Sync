@@ -55,10 +55,8 @@ class HealthKitManager: ObservableObject {
 
     func autorizeHealthKit() {
          
-         // Used to define the identifiers that create quantity type objects.
            let healthKitTypes: Set = [
            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
-        // Requests permission to save and read the specified data types.
            healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { _, _ in }
        }
     
@@ -212,10 +210,9 @@ class HealthKitManager: ObservableObject {
         let query = HKStatisticsQuery(quantityType: stepsType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
             if let sum = result?.sumQuantity() {
                 DispatchQueue.main.async {
-                    // Handle or store the daily step count
                     let stepCount = sum.doubleValue(for: HKUnit.count())
                     print("Daily Steps: \(stepCount)")
-                    completion(stepCount) // Call the completion handler with the result
+                    completion(stepCount)
                 }
             }
         }
@@ -230,10 +227,9 @@ class HealthKitManager: ObservableObject {
         let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: Date(), options: .strictStartDate)
         let query = HKStatisticsQuery(quantityType: caloriesType, quantitySamplePredicate: predicate) { _, result, _ in
             if let sum = result?.sumQuantity() {
-                // Handle or store the daily calorie data
                 let calories = sum.doubleValue(for: HKUnit.kilocalorie())
                 DispatchQueue.main.async {
-                    completion(calories) // Call the completion handler with the result
+                    completion(calories)
                 }
             }
         }
@@ -250,28 +246,24 @@ class HealthKitManager: ObservableObject {
 
             let dispatchGroup = DispatchGroup()
 
-            // Perform the HealthKit queries in a Dispatch Group to wait for both values to be available
             dispatchGroup.enter()
-            getDailySteps { [self] stepCount in // Capture self explicitly
+            getDailySteps { [self] stepCount in
                 steps = stepCount
                 dispatchGroup.leave()
             }
 
             dispatchGroup.enter()
-            getDailyCalories { [self] calorieCount in // Capture self explicitly
+            getDailyCalories { [self] calorieCount in
                 calories = calorieCount
                 dispatchGroup.leave()
             }
-
-            // Wait for both queries to complete
             dispatchGroup.notify(queue: .main) {
-                // Obtain the currently logged-in user's email
                 if let user = Auth.auth().currentUser, let userEmail = user.email {
                     let dailyData: [String: Any] = [
                         "date": todayDateString,
                         "steps": steps,
                         "calories": calories,
-                        "userEmail": userEmail // Include user's email in the data
+                        "userEmail": userEmail
                     ]
 
                     self.db.collection("healthdata").addDocument(data: dailyData) { error in
@@ -295,20 +287,18 @@ class HealthKitManager: ObservableObject {
     
     func fetchDataFromFirestore(userEmail: String) {
         guard database.isEmpty else {
-            return // Data has already been fetched
+            return
         }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let todayDateString = dateFormatter.string(from: Date())
 
-        // Reference to the Firestore collection
         let collectionReference = self.db.collection("healthdata")
 
-        // Query Firestore for documents with today's date and matching userEmail
         collectionReference
             .whereField("date", isEqualTo: todayDateString)
-            .whereField("userEmail", isEqualTo: userEmail) // Add this line to filter by userEmail
+            .whereField("userEmail", isEqualTo: userEmail)
             .getDocuments { (querySnapshot, error) in
                 if let error = error {
                     print("Error retrieving data from Firestore: \(error)")
@@ -326,12 +316,10 @@ class HealthKitManager: ObservableObject {
                        let steps = data["steps"] as? Double,
                        let calories = data["calories"] as? Double {
 
-                        // Append data to your self.database array
                         self.database.append(Database(date: date, calories: "\(calories.rounded(.towardZero))", steps: "\(steps.rounded(.towardZero))", image: "star.circle", color: Color(red: 216/255, green: 67/255, blue: 57/255)))
                     }
                 }
 
-                // Now your self.database array is populated with data from Firestore
                 print("Data retrieved from Firestore")
             }
     }

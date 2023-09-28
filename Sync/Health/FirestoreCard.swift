@@ -47,7 +47,7 @@ struct FirestoreCard: View {
             )
             .padding()
         }
-        .background(Color.clear) // To avoid overlapping backgrounds
+        .background(Color.clear)
     }
 }
 

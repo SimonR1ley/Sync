@@ -108,7 +108,6 @@ struct Login: View {
             }
             .navigationBarHidden(true)
             
-            // Define a custom TextFieldStyle for consistent styling.
             
             
         }

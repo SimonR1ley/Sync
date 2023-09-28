@@ -22,7 +22,6 @@ struct Register: View {
        @State private var showOnboarding = false
 
     func registerUser() {
-           // Validate that text fields are not empty
            guard !email.isEmpty, !password.isEmpty, !username.isEmpty else {
                print("Please fill in all the fields")
                return
@@ -32,14 +31,11 @@ struct Register: View {
                if let error = error {
                    print("Error creating user: \(error.localizedDescription)")
                } else {
-                   // User registration successful
                    print("User registered successfully!")
                    
-                   // Store user details in Firestore
                    let userData: [String: Any] = [
                        "username": username,
                        "email": email
-                       // Add more user details if needed
                    ]
                    
                    let db = Firestore.firestore()
@@ -49,7 +45,7 @@ struct Register: View {
                            print("Error storing user data in Firestore: \(error.localizedDescription)")
                        } else {
                            print("User data stored in Firestore successfully!")
-                           registrationSuccess = true // Set the registration success flag
+                           registrationSuccess = true
                        }
                    }
                }

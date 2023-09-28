@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SyncTabView: View {
     @State var selectedTab = "Home"
-    let manager = HealthKitManager() // Create an instance of HealthKitManager
+    let manager = HealthKitManager() 
     
     var body: some View {
         TabView(selection: $selectedTab) {
-            HealthViewScreen(manager: manager) // Pass the manager to the HealthViewScreen
+            HealthViewScreen(manager: manager)
                 .tag("Home")
                 .tabItem {
                     Image(systemName: "house")
